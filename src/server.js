@@ -1,9 +1,11 @@
 import express from 'express';
 import router from './routes/index.js';
+import logRequests from './middlewares/logger.middleware.js';
 
 const app = express();
 const port = 3001;
 
+app.use(logRequests);
 app.use(express.json());
 
 app.use('/api', router);
