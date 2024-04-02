@@ -1,5 +1,5 @@
 import Exceptions from '../errors/index.js';
-import Database from '../bd/Database.js';
+import Database from '../database/Database.js';
 
 const groups = new Database();
 
