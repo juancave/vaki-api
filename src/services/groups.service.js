@@ -1,10 +1,11 @@
 import Exceptions from '../errors/index.js';
+import Database from '../bd/Database.js';
 
-const bd = [];
+const groups = new Database();
 
-const getAll = () => bd;
+const getAll = () => groups.getAll();
 
-const getById = (id) => bd.find((element) => element.id === Number(id));
+const getById = (id) => groups.getById(Number(id));
 
 const create = (body) => {
   const { name } = body;
@@ -13,13 +14,14 @@ const create = (body) => {
     throw new Exceptions.BadRequest('The field name is not valid');
   }
 
-  if (bd.some((element) => element.name === name.toLowerCase())) {
+  const element = groups.getByProp('name', name.toLowerCase());
+
+  if (element) {
     throw new Exceptions.Conflict('The group already exists');
   }
 
-  bd.push({
+  groups.save({
     name: name.toLowerCase(),
-    id: (bd[bd.length - 1] || { id: 0 }).id + 1,
   });
 };
 
