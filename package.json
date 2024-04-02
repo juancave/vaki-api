@@ -1,0 +1,30 @@
+{
+  "name": "vaki-api",
+  "version": "1.0.0",
+  "description": "Vaki API endpoints using Express",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juancave/vaki-api.git"
+  },
+  "keywords": [
+    "express",
+    "api",
+    "bd",
+    "tests"
+  ],
+  "author": "Juan Camilo Velásquez Vanegas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juancave/vaki-api/issues"
+  },
+  "homepage": "https://github.com/juancave/vaki-api#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
