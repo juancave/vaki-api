@@ -20,6 +20,9 @@ $ npm run dev
 ```bash
 # unit tests
 $ npm run test
+
+# test coverage
+$ npm run test:cov
 ```
 
 ## Stay in touch
