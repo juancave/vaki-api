@@ -12,6 +12,18 @@ const getAll = (_req, res) => {
   });
 };
 
+const getById = (req, res) => {
+  const data = groupsService.getById(req.params.id);
+
+  if (!data) {
+    return res.status(404).send();
+  }
+
+  return res.status(200).send({
+    data,
+  });
+};
+
 const create = (req, res) => {
   try {
     return res.send(groupsService.create(req.body));
@@ -22,5 +34,6 @@ const create = (req, res) => {
 
 export default {
   getAll,
+  getById,
   create,
 };

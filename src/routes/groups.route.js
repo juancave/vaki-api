@@ -4,6 +4,7 @@ import groupsController from '../controllers/groups.controller.js';
 const router = express.Router();
 
 router.get('/', groupsController.getAll);
+router.get('/:id', groupsController.getById);
 router.post('/', groupsController.create);
 
 export default router;
