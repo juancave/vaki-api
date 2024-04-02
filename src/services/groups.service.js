@@ -5,7 +5,7 @@ const groups = new Database();
 
 const getAll = () => groups.getAll();
 
-const getById = (id) => groups.getById(Number(id));
+const getById = (id) => groups.getById(id);
 
 const create = (body) => {
   const { name } = body;

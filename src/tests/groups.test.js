@@ -28,6 +28,28 @@ describe('Groups endpoints', () => {
     expect(res.status).toEqual(200);
   });
 
+  it('POST /api/groups should thrown an exception when the body is not valid', async () => {
+    const body = {};
+
+    const res = await requestWithSupertest.post(URL).send(body);
+
+    expect(res.status).toEqual(400);
+  });
+
+  it('POST /api/groups should thrown an exception when an existing group name is provided', async () => {
+    const body = {
+      name: 'Existing group',
+    };
+
+    const res = await requestWithSupertest.post(URL).send(body);
+
+    expect(res.status).toEqual(200);
+
+    const existingRes = await requestWithSupertest.post(URL).send(body);
+
+    expect(existingRes.status).toEqual(409);
+  });
+
   it('GET /api/groups should return all groups', async () => {
     const body = {
       name: 'Group example 2',
