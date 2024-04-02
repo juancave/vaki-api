@@ -28,9 +28,9 @@ class Database {
   }
 
   update(id, newEntity) {
-    const entityIndex = this.entities.findIndex((entity) => entity.id === id);
+    const entityIndex = this.entities.findIndex((entity) => entity.id === Number(id));
 
-    if (entityIndex) {
+    if (entityIndex !== -1) {
       this.entities[entityIndex] = newEntity;
     }
   }

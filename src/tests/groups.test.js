@@ -21,6 +21,7 @@ describe('Groups endpoints', () => {
   it('POST /api/groups should create a new group', async () => {
     const body = {
       name: 'Group example',
+      color: '#FFF',
     };
 
     const res = await requestWithSupertest.post(URL).send(body);
@@ -39,6 +40,7 @@ describe('Groups endpoints', () => {
   it('POST /api/groups should thrown an exception when an existing group name is provided', async () => {
     const body = {
       name: 'Existing group',
+      color: '#FFF',
     };
 
     const res = await requestWithSupertest.post(URL).send(body);
@@ -53,6 +55,7 @@ describe('Groups endpoints', () => {
   it('GET /api/groups should return all groups', async () => {
     const body = {
       name: 'Group example 2',
+      color: '#FFF',
     };
 
     const createRes = await requestWithSupertest.post(URL).send(body);

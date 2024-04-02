@@ -1,27 +1,27 @@
 import groupsService from '../services/groups.service.js';
 
 const getAll = (_req, res) => {
-  const data = groupsService.getAll();
+  try {
+    const data = groupsService.getAll();
 
-  if (!data || !data.length) {
-    return res.status(404).send();
+    return res.status(200).send({
+      data,
+    });
+  } catch (error) {
+    return res.status(error.statusCode).send(error.message);
   }
-
-  return res.status(200).send({
-    data,
-  });
 };
 
 const getById = (req, res) => {
-  const data = groupsService.getById(req.params.id);
+  try {
+    const data = groupsService.getById(req.params.id);
 
-  if (!data) {
-    return res.status(404).send();
+    return res.status(200).send({
+      data,
+    });
+  } catch (error) {
+    return res.status(error.statusCode).send(error.message);
   }
-
-  return res.status(200).send({
-    data,
-  });
 };
 
 const create = (req, res) => {
@@ -32,8 +32,17 @@ const create = (req, res) => {
   }
 };
 
+const update = (req, res) => {
+  try {
+    return res.send(groupsService.update(req.params, req.body));
+  } catch (error) {
+    return res.status(error.statusCode).send(error.message);
+  }
+};
+
 export default {
   getAll,
   getById,
   create,
+  update,
 };
