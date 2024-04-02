@@ -9,7 +9,11 @@ const getAll = (_req, res) => {
 }
 
 const create = (req, res) => {
-  return res.status(200).send(groupsService.create(req.body))
+  try {
+    return res.send(groupsService.create(req.body))
+  } catch (error) {
+    return res.status(error.statusCode).send(error.message)
+  }
 }
 
 export default {
