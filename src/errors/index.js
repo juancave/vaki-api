@@ -1,18 +1,7 @@
-export class BadRequest extends Error {
-  constructor(message) {
-    super(message)
-    this.statusCode = 400
-  }
-}
-
-export class Conflict extends Error {
-  constructor(message) {
-    super(message)
-    this.statusCode = 409
-  }
-}
+import BadRequest from './BadRequest.js';
+import Conflict from './Conflict.js';
 
 export default {
-  Conflict,
   BadRequest,
-}
+  Conflict,
+};

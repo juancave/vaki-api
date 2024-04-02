@@ -1,9 +1,9 @@
-import express from 'express'
-import groupsRoute from './groups.route.js'
+import express from 'express';
+import groupsRoute from './groups.route.js';
 
-const router = express.Router()
+const router = express.Router();
 
 // routes
-router.use('/groups', groupsRoute)
+router.use('/groups', groupsRoute);
 
-export default router
+export default router;

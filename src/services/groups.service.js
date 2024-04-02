@@ -1,26 +1,24 @@
-import { BadRequest, Conflict } from '../errors/index.js'
+import Exceptions from '../errors/index.js';
 
 const bd = ['group1', 'group2'];
 
-const getAll = () => {
-  return bd
-}
+const getAll = () => bd;
 
 const create = (body) => {
-  const { name } = body
+  const { name } = body;
 
   if (!name) {
-    throw new BadRequest('The field name is not valid')
+    throw new Exceptions.BadRequest('The field name is not valid');
   }
 
   if (bd.includes(name.toLowerCase())) {
-    throw new Conflict('The group already exists')
+    throw new Exceptions.Conflict('The group already exists');
   }
 
-  bd.push(name.toLowerCase())
-}
+  bd.push(name.toLowerCase());
+};
 
 export default {
   getAll,
   create,
-}
+};

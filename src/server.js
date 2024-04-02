@@ -1,15 +1,16 @@
-import express from 'express'
-import router from './routes/index.js'
+import express from 'express';
+import router from './routes/index.js';
 
-const app = express()
-const port = 3001
+const app = express();
+const port = 3001;
 
-app.use(express.json())
+app.use(express.json());
 
-app.use('/api', router)
+app.use('/api', router);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  // eslint-disable-next-line no-console
+  console.log(`Vaki endpoints are ready on port ${port}`);
+});
 
-export default app
+export default app;
