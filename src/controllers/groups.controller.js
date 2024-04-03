@@ -40,9 +40,18 @@ const update = (req, res) => {
   }
 };
 
+const remove = (req, res) => {
+  try {
+    return res.send(groupsService.remove(req.params));
+  } catch (error) {
+    return res.status(error.statusCode).send(error.message);
+  }
+};
+
 export default {
   getAll,
   getById,
   create,
   update,
+  remove,
 };

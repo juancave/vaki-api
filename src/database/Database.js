@@ -4,15 +4,15 @@ class Database {
   }
 
   getAll() {
-    return this.entities;
+    return this.entities.filter((element) => !element.deletedAt);
   }
 
   getById(id) {
-    return this.entities.find((element) => element.id === Number(id));
+    return this.entities.find((element) => element.id === Number(id) && !element.deletedAt);
   }
 
   getByProp(prop, value) {
-    return this.entities.find((element) => element[prop] === value);
+    return this.entities.find((element) => element[prop] === value && !element.deletedAt);
   }
 
   save(entity) {
@@ -23,8 +23,19 @@ class Database {
     });
   }
 
+  softDelete(id) {
+    const entityIndex = this.entities.findIndex((entity) => entity.id === Number(id));
+
+    if (entityIndex !== -1) {
+      this.entities[entityIndex] = {
+        ...this.entities[entityIndex],
+        deletedAt: new Date(),
+      };
+    }
+  }
+
   delete(id) {
-    return this.entities.filter((entity) => entity.id !== id);
+    return this.entities.filter((entity) => entity.id !== Number(id));
   }
 
   update(id, newEntity) {

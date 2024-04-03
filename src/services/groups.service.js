@@ -79,9 +79,16 @@ const update = (params, body) => {
   });
 };
 
+const remove = (params) => {
+  const { id } = params;
+
+  groups.softDelete(id);
+};
+
 export default {
   getAll,
   getById,
   create,
   update,
+  remove,
 };
